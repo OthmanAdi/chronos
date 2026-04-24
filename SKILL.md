@@ -5,7 +5,7 @@ version: 1.0.0
 license: MIT
 author: OthmanAdi
 tags: [time, temporal, autonomy, ledger, agents, hooks, session-management]
-homepage: https://github.com/OthmanAdi/chronos
+homepage: https://aware-bloom-szmt.here.now
 repository: https://github.com/OthmanAdi/chronos
 allowed-tools: Read, Bash(date *), Bash(stat *), Bash(cat *), Bash(jq *), Bash(ls *), Bash(git log *), Bash(git status *)
 ---
