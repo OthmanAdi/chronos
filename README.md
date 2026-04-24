@@ -8,6 +8,10 @@
 
 **Time awareness for AI coding agents.** Stops your agent from guessing "when" and "how long ago".
 
+```bash
+npx skills add OthmanAdi/chronos --skill chronos -g
+```
+
 Works across Claude Code, Codex, OpenCode, Cursor, PI, OpenClaw, Hermes, ADAL.
 
 ---
