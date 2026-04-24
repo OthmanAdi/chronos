@@ -1,5 +1,7 @@
 # chronos
 
+![How AI reacts when you ask what time it is](assets/banner.png)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
 [![Platforms](https://img.shields.io/badge/platforms-8-black)](README.md#platform-matrix)
 [![Paper](https://img.shields.io/badge/arxiv-2510.23853-black)](https://arxiv.org/abs/2510.23853)
