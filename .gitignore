@@ -1,0 +1,4 @@
+findings.md
+*.chronos-backup-*
+.DS_Store
+Thumbs.db

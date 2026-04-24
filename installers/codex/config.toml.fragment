@@ -1,0 +1,5 @@
+# chronos — Codex feature flag fragment.
+# Append to ~/.codex/config.toml:
+
+[features]
+codex_hooks = true

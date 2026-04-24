@@ -1,0 +1,20 @@
+{
+  "_comment": "chronos — Windows PowerShell variant. Replace ${CHRONOS_ROOT} with absolute Windows path (e.g. C:\\Users\\you\\Documents\\here-now-projects\\chronos).",
+  "hooks": {
+    "SessionStart": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell -ExecutionPolicy Bypass -File \"${CHRONOS_ROOT}\\scripts\\session_start.ps1\"" } ] }
+    ],
+    "UserPromptSubmit": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell -ExecutionPolicy Bypass -File \"${CHRONOS_ROOT}\\scripts\\prompt_submit.ps1\"" } ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell -ExecutionPolicy Bypass -File \"${CHRONOS_ROOT}\\scripts\\pre_tool.ps1\"", "async": true } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell -ExecutionPolicy Bypass -File \"${CHRONOS_ROOT}\\scripts\\post_tool.ps1\"", "async": true } ] }
+    ],
+    "Stop": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "powershell -ExecutionPolicy Bypass -File \"${CHRONOS_ROOT}\\scripts\\stop.ps1\"" } ] }
+    ]
+  }
+}

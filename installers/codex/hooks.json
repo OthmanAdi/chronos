@@ -1,0 +1,20 @@
+{
+  "_comment": "chronos — Codex CLI hooks. Drop into ~/.codex/hooks.json (user) or <repo>/.codex/hooks.json. Also add [features] codex_hooks = true to ~/.codex/config.toml. Replace ${CHRONOS_ROOT}. Note: Codex PreToolUse matches Bash only; Read/Write/Edit tool events may be unavailable until coverage extends.",
+  "hooks": {
+    "SessionStart": [
+      { "command": "bash ${CHRONOS_ROOT}/scripts/session_start.sh" }
+    ],
+    "UserPromptSubmit": [
+      { "command": "bash ${CHRONOS_ROOT}/scripts/prompt_submit.sh" }
+    ],
+    "PreToolUse": [
+      { "command": "bash ${CHRONOS_ROOT}/scripts/pre_tool.sh", "async": true }
+    ],
+    "PostToolUse": [
+      { "command": "bash ${CHRONOS_ROOT}/scripts/post_tool.sh", "async": true }
+    ],
+    "Stop": [
+      { "command": "bash ${CHRONOS_ROOT}/scripts/stop.sh" }
+    ]
+  }
+}

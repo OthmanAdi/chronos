@@ -1,0 +1,51 @@
+---
+description: Time-awareness for coding agents. Consult shell clock + file mtimes before reasoning about "when" or "how long ago". No hooks on Cursor — degraded mode only.
+alwaysApply: true
+---
+
+# chronos — time awareness (Cursor degraded mode)
+
+Cursor has no hook API. You have no ledger. But the decision rules still apply.
+
+## Rules
+
+1. **Before retrying a failed command** — ask the user "how long ago did we try this?" if it's not obvious from the chat transcript. Don't re-run identically within 60s of the same failure.
+
+2. **Before trusting prior reads or memory** —
+   - `git status`, running processes: stale after ~5 min of chat idle. Re-query.
+   - File you Read earlier: if the user edited anything since, re-Read.
+   - External API responses: stale after 5 min.
+
+3. **Before reporting progress** — if the session feels long, write a structured recap with the concrete steps taken, not a vague summary.
+
+4. **Idle-loop detection** — if you're in an agent loop and uncertain about user direction, pause and ask.
+
+5. **Before saying "just now" / "recently" / "in a few minutes"** — get a concrete timestamp. Run a `date -u` shell command.
+
+6. **Date/time questions** — never guess. Run `date -u +"%Y-%m-%dT%H:%M:%SZ"` or read a file's mtime with `stat -c %Y <path>`.
+
+## How to get time on Cursor
+
+Use the terminal tool. Bash:
+
+```bash
+date -u +"%Y-%m-%dT%H:%M:%SZ"   # current UTC
+stat -c %Y <path>               # file mtime epoch
+git log -1 --format=%cI <path>  # last-commit ISO
+```
+
+PowerShell:
+
+```powershell
+Get-Date -AsUTC -Format o
+(Get-Item <path>).LastWriteTimeUtc
+```
+
+## What you're missing without hooks
+
+- No per-turn elapsed counter
+- No session duration
+- No tool-use ledger
+- No idle detection
+
+For full chronos, use Claude Code or Codex.

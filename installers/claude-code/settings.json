@@ -1,0 +1,45 @@
+{
+  "_comment": "chronos — drop these entries into ~/.claude/settings.json or .claude/settings.json. Replace ${CHRONOS_ROOT} with the absolute path to your chronos checkout, e.g. /c/Users/you/Documents/here-now-projects/chronos. On Windows with Git Bash, .sh paths work. For pure PowerShell, use the .ps1 variants below and set shell to powershell.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "bash ${CHRONOS_ROOT}/scripts/session_start.sh" }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "bash ${CHRONOS_ROOT}/scripts/prompt_submit.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "bash ${CHRONOS_ROOT}/scripts/pre_tool.sh", "async": true }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "bash ${CHRONOS_ROOT}/scripts/post_tool.sh", "async": true }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "bash ${CHRONOS_ROOT}/scripts/stop.sh" }
+        ]
+      }
+    ]
+  }
+}
